@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AdjacencyMatrixGraph<E,D> implements Graph<E,D> {
@@ -21,14 +22,23 @@ public class AdjacencyMatrixGraph<E,D> implements Graph<E,D> {
     }
 
     public Edge<E, D> getEdge(Vertex<E> u, Vertex<E> v) {
-        for (Edge<E,D> edge : edges.values()){
-            if ((edge.source == u && edge.destination == v) ||
-                (edge.source == v && edge.destination == u)) {
+        for (Edge<E,D> edge : edges()){
+            if ((edge.source == u && edge.destination == v)) {
                 return edge;
             }
         }
-
         return null;
+    }
+
+    public ArrayList<Edge<E,D>> getOutEdges(Vertex<E> source) {
+        ArrayList<Edge<E,D>> outEdges = new ArrayList<>();
+        for (Vertex<E> destination : vertices()) {
+            Edge<E,D> matchingEdge = getEdge(source, destination);
+            if (matchingEdge != null) {
+                outEdges.add(outEdges.size(), matchingEdge);
+            }
+        }
+        return outEdges;
     }
 
     public Edge<E, D> getEdge(E source, E destination) {
@@ -37,7 +47,7 @@ public class AdjacencyMatrixGraph<E,D> implements Graph<E,D> {
 
     public int outDegree(Vertex<E> vertex) {
         int count = 0;
-        for (Edge<E,D> edge : edges.values()){
+        for (Edge<E,D> edge : edges()){
             if (edge.getSource() == vertex) {
                 count++;
             }
@@ -47,7 +57,7 @@ public class AdjacencyMatrixGraph<E,D> implements Graph<E,D> {
 
     public int inDegree(Vertex<E> vertex) {
         int count = 0;
-        for (Edge<E,D> edge : edges.values()){
+        for (Edge<E,D> edge : edges()){
             if (edge.getDestination() == vertex) {
                 count++;
             }
@@ -64,10 +74,13 @@ public class AdjacencyMatrixGraph<E,D> implements Graph<E,D> {
     }
 
     public boolean deleteVertex(Vertex<E> u) {
-        return vertices.remove(u.getElement(), u);
+        return deleteVertex(u.getElement());
     }
 
     public boolean deleteVertex(E element) {
+        for (Edge<E,D> outEdge : getOutEdges(vertices.get(element))) {
+            deleteEdge(outEdge.source, outEdge.destination);
+        }
         return vertices.remove(element, vertices.get(element));
     }
 
