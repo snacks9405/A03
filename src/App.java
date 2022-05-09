@@ -1,5 +1,6 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        AdjacencyMatrixGraph<String, Integer> myGraph = GraphBuilder.buildGraphFromFile("graph.txt");
+        myGraph.printAdjacencyMatrix();
     }
 }

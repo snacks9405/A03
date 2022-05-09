@@ -8,4 +8,5 @@ public class Vertex<E> {
     E getElement() {
         return element;
     }
+
 }
