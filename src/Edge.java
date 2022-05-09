@@ -20,4 +20,9 @@ public class Edge<E,D> {
     E getDestination() {
         return destination;
     }
+
+    @Override
+    public String toString() {
+        return (source + "->" + destination + "(" + element + ")");
+    }
 }

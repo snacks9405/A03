@@ -102,7 +102,7 @@ public class AdjacencyMatrixGraph<E, D> implements Graph<E, D> {
         return edges.remove(edgeToDelete.getElement(), edgeToDelete);
     }
 
-    public void printAdjacencyMatrix() {
+    public void printVerticesAndEdges() {
         int printIndex = 1;
         System.out.printf("# of vertices: %d\n", vertices.size());
         System.out.printf("# of edges: %d\n", edges.size());
@@ -122,7 +122,7 @@ public class AdjacencyMatrixGraph<E, D> implements Graph<E, D> {
         System.out.printf("edges: ");
 
         for (Edge<E, D> printEdge : edges()) {
-            System.out.printf("%s->%s(%s)", printEdge.source, printEdge.destination, printEdge.element);
+            System.out.printf(printEdge.toString());
             if (printIndex < edges.size()) {
                 System.out.printf(", ");
                 printIndex++;
@@ -133,6 +133,11 @@ public class AdjacencyMatrixGraph<E, D> implements Graph<E, D> {
         // TODO
     }
 
+    public void printAdjacencyMatrix() {
+        String[][] adjacencyMatrix;
+
+        
+    }
     public void drawGraph() {
         // TODO
     }
