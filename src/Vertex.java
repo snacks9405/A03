@@ -9,4 +9,9 @@ public class Vertex<E> {
         return element;
     }
 
+    @Override
+    public String toString() {
+        return element.toString();
+    }
+
 }
