@@ -2,10 +2,19 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * parses text file and builds an .
+ */
 public class GraphBuilder {
     static int numVertices;
     static int numEdges;
 
+    /**
+     * parses text file and builds an AdjacencyMatrixGraph<String,Integer>
+     * standard scan and such.
+     * @param fileName
+     * @return
+     */
     public static AdjacencyMatrixGraph<String, Integer> buildGraphFromFile(String fileName) {
         Scanner scan = null;
         AdjacencyMatrixGraph<String, Integer> myGraph = new AdjacencyMatrixGraph<>();
@@ -30,5 +39,5 @@ public class GraphBuilder {
         }
        
         return myGraph;
-    }
-}
+    }//buildGraphFromFile method
+}//GraphBuilder class

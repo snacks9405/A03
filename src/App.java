@@ -4,11 +4,13 @@ public class App {
         myGraph.printVerticesAndEdges();
         myGraph.printAdjacencyMatrix();
         myGraph.drawGraph();
-        //myGraph.deleteEdge("ATW", "ORD");
-        //myGraph.printVerticesAndEdges();
-        //myGraph.drawGraph();
-        //myGraph.deleteVertex("ATW");
-        //myGraph.drawGraph();
-        //myGraph.printVerticesAndEdges();
+        myGraph.deleteEdge("ATW", "ORD");
+        myGraph.printVerticesAndEdges();
+        myGraph.drawGraph();
+        myGraph.deleteVertex("ATW");
+        myGraph.drawGraph();
+        myGraph.printVerticesAndEdges();
+        myGraph.deleteEdge("MSN", "ORD");
+        myGraph.drawGraph();
     }
 }
